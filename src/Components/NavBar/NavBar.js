@@ -1,5 +1,6 @@
 import { Flex, Stack} from '@chakra-ui/react'
 import Logo from '../Logo/logo.js'
+import Cartwidget from '../CartWidget/CartWidget'
 
 const Navbar = () => {
  return (
@@ -11,6 +12,7 @@ const Navbar = () => {
             <a href="/">Nosotros</a>
             <a href="/">Contacto</a>
             <a href="/">Carrito</a>
+            <Cartwidget />
         </Stack>
     </Flex>
     </>
