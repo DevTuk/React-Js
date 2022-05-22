@@ -1,28 +1,20 @@
 import './App.css';
 // import  Navbar from './Components/NavBar/NavBar';
-import Footer from './Components/Footer/footer';
+import Footer from './Components/Footer/Footer';
 import { ChakraProvider } from '@chakra-ui/react';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
 import Header from './Components/Header/Header';
-import CountFunction from './Components/Contador/Contador';
-import { useState } from 'react';
+import ItemCount from './Components/ItemCount/ItemCount';
+
 
 function App() {
 
-  const [count, setCount] = useState(1);
-  const decrement = () => {
-    setCount(count - 1);
-  };
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  return (
+   return (
     <ChakraProvider>
       <div className='App'>
-        <Header valor1={count} />
+        <Header valor={1}/>
         <ItemListContainer greeting='Welcome' />
-        <CountFunction sumamos={increment}restamos={decrement}valor={count}stock={4}/>
+        <ItemCount stock={4}initial={1}/>
         <Footer />
       </div>
     </ChakraProvider>

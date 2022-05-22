@@ -1,5 +1,29 @@
 import { Text, Flex, Center, Button, Box, Image } from '@chakra-ui/react';
-const CountFunction = (props) => {
+import { useState } from 'react';
+
+
+const ItemCount = (props) => {
+ 
+  const [count, setCount] = useState(0);
+  
+ 
+  const restar = () => {
+    if (count > 0){      
+     setCount(count - 1);
+  }};
+  
+  const sumar = () => {
+    if (count < props.stock){      
+    setCount(count + 1);
+
+  }};
+
+  function onAdd () {
+    if(count <=0) { alert("El carrito esta vacío")
+    }else {
+    alert('Agregaste ' + count + ' productos al carrito');
+    }
+}
   return (
     <Flex direction='column' h='800px'>
       <Text
@@ -54,16 +78,12 @@ const CountFunction = (props) => {
                     size='md'
                     backgroundColor='pink.300'
                     color='gray.800'
-                    onClick={
-                      props.valor <= 1
-                        ? console.log('no se puede restar')
-                        : props.restamos
-                    }
+                    onClick={restar}
                   >
                     -
                   </Button>
                   <Text color='gray.800' ml={5} mr={5}>
-                    {props.valor}
+                    {count}
                   </Text>
                   <Button
                     variant='solid'
@@ -71,11 +91,8 @@ const CountFunction = (props) => {
                     border={1}
                     backgroundColor='pink.300'
                     color='gray.800'
-                    onClick={
-                      props.valor === props.stock
-                        ? console.log('stock máximo seleccionado')
-                        : props.sumamos
-                    }
+                    onClick={sumar}
+                    
                   >
                     +
                   </Button>
@@ -86,6 +103,7 @@ const CountFunction = (props) => {
                 size='md'
                 color='gray.800'
                 colorScheme='whatsapp'
+                onClick={onAdd}
               >
                 Agregar al carrito
               </Button>
@@ -97,4 +115,4 @@ const CountFunction = (props) => {
   );
 };
 
-export default CountFunction;
+export default ItemCount;

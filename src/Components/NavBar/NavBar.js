@@ -24,7 +24,7 @@ const Navbar = (props) => {
           <a href='/'>Nosotros</a>
           <a href='/'>Contacto</a>
           <a href='/'>Carrito</a>
-          <Cartwidget valor3={props.valor2}/>
+          <Cartwidget/>
         </Stack>
       </Flex>
     </>

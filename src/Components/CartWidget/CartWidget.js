@@ -11,7 +11,7 @@ const Cartwidget = (props) => {
       <Box>
         <FontAwesomeIcon icon={faCartShopping} /> 
        </Box>
-       <Box ml='10px'>{props.valor3}</Box>
+       <Box ml='10px'>{props.valor}</Box>
        </Flex>
       
     </>
