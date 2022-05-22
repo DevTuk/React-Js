@@ -5,25 +5,31 @@ import { useState } from 'react';
 const ItemCount = (props) => {
  
   const [count, setCount] = useState(0);
-  
+  const [btnActivo, setBtnActivo] = useState(false);
  
   const restar = () => {
     if (count > 0){      
      setCount(count - 1);
+     setBtnActivo(false);
   }};
   
   const sumar = () => {
     if (count < props.stock){      
-    setCount(count + 1);
-
+    setCount(count + 1)}
+    if (count === props.stock) {
+    setBtnActivo(true);
   }};
-
+  
+   
+ 
+   
   function onAdd () {
     if(count <=0) { alert("El carrito esta vacío")
     }else {
     alert('Agregaste ' + count + ' productos al carrito');
     }
 }
+  
   return (
     <Flex direction='column' h='800px'>
       <Text
@@ -71,6 +77,9 @@ const ItemCount = (props) => {
               <Text fontSize='sm' mb={3} color='gray.800'>
                 $6500
               </Text>
+              <Text fontSize='sm' mb={3} color='gray.800'>
+                ...
+              </Text>
               <Box>
                 <Flex justifyContent='center' alignItems='center' m={5}>
                   <Button
@@ -86,12 +95,14 @@ const ItemCount = (props) => {
                     {count}
                   </Text>
                   <Button
+                    className='btnActivo'
                     variant='solid'
                     size='md'
                     border={1}
                     backgroundColor='pink.300'
                     color='gray.800'
                     onClick={sumar}
+                    disabled={btnActivo}
                     
                   >
                     +
