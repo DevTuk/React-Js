@@ -4,9 +4,6 @@ import Footer from './Components/Footer/Footer';
 import { ChakraProvider } from '@chakra-ui/react';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
 import Header from './Components/Header/Header';
-import MercadoLibre from './Components/peticionML/peticionML';
-
-
 
 function App() {
 
