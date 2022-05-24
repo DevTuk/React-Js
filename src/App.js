@@ -4,7 +4,8 @@ import Footer from './Components/Footer/Footer';
 import { ChakraProvider } from '@chakra-ui/react';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
 import Header from './Components/Header/Header';
-import ItemCount from './Components/ItemCount/ItemCount';
+import MercadoLibre from './Components/peticionML/peticionML';
+
 
 
 function App() {
@@ -12,9 +13,10 @@ function App() {
    return (
     <ChakraProvider>
       <div className='App'>
+        
         <Header valor={1}/>
         <ItemListContainer greeting='Welcome' />
-        <ItemCount stock={4}initial={1}/>
+        
         <Footer />
       </div>
     </ChakraProvider>

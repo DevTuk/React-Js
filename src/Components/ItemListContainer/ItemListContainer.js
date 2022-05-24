@@ -1,17 +1,25 @@
-import { Center } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import ItemList from '../Items/ItemList';
+import {CustomFetch} from '../async/async';
 
 
+const ItemListContainer = () => {
+  const [products, setProductos] = useState([]);
 
-const ItemListContainer = (props) => {
+  useEffect(() => {
+    CustomFetch().then((response) => {
+      setProductos(response);
+    });
+  }, []);
+  
   return (
-    <>
-      <Center h='200' bg='gray.800' color='white' fontSize={100}>
-        {props.greeting}
-      
-      </Center>
-      
-    </>
+     <>
+      <ItemList producto={products}/>
+     </>
   );
 };
 
 export default ItemListContainer;
+
+
+// <ItemDetail /> tiene que venir acá, mostrar el detalle del producto. 

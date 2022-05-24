@@ -3,7 +3,7 @@ import Logo from '../Logo/logo.js';
 import Cartwidget from '../CartWidget/CartWidget';
 
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <>
       <Flex
