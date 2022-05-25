@@ -4,8 +4,8 @@ import { useState } from 'react';
 const ItemCount = (props) => {
   const [count, setCount] = useState(0);
   const [btnActivo, setBtnActivo] = useState(false);
-  
-    const restar = () => {
+
+  const restar = () => {
     if (count > 0) {
       setCount(count - 1);
       setBtnActivo(false);
@@ -15,7 +15,6 @@ const ItemCount = (props) => {
   const sumar = () => {
     if (count < props.stock) {
       setCount(count + 1);
-      
     }
     if (count >= props.stock) {
       setBtnActivo(true);
@@ -23,52 +22,51 @@ const ItemCount = (props) => {
   };
 
   function onAdd() {
-    
-    if (count <= 0) { 
-       alert('El carrito esta vacío');
+    if (count <= 0) {
+      alert('El carrito esta vacío');
     } else {
-       alert('Agregaste ' + count + ' productos al carrito');
+      alert('Agregaste ' + count + ' productos al carrito');
     }
   }
   return (
     <Flex direction='column' marginTop='-12'>
-             <Box>
-                <Flex justifyContent='center' alignItems='center' m={5}>
-                  <Button
-                    variant='solid'
-                    size='md'
-                    backgroundColor='pink.300'
-                    color='gray.800'
-                    onClick={restar}
-                  >
-                    -
-                  </Button>
-                  <Text color='gray.800' ml={5} mr={5}>
-                    {count}
-                  </Text>
-                  <Button
-                    className='btnActivo'
-                    variant='solid'
-                    size='md'
-                    border={1}
-                    backgroundColor='pink.300'
-                    color='gray.800'
-                    onClick={sumar}
-                    disabled={btnActivo}
-                  >
-                    +
-                  </Button>
-                </Flex>
-              </Box>
-              <Button
-                variant='solid'
-                size='md'
-                color='gray.800'
-                colorScheme='whatsapp'
-                onClick={() => onAdd (setCount(0))} 
-                >
-                Agregar al carrito
-              </Button>
+      <Box>
+        <Flex justifyContent='center' alignItems='center' m={5}>
+          <Button
+            variant='solid'
+            size='md'
+            backgroundColor='pink.300'
+            color='gray.800'
+            onClick={restar}
+          >
+            -
+          </Button>
+          <Text color='gray.800' ml={5} mr={5}>
+            {count}
+          </Text>
+          <Button
+            className='btnActivo'
+            variant='solid'
+            size='md'
+            border={1}
+            backgroundColor='pink.300'
+            color='gray.800'
+            onClick={sumar}
+            disabled={btnActivo}
+          >
+            +
+          </Button>
+        </Flex>
+      </Box>
+      <Button
+        variant='solid'
+        size='md'
+        color='gray.800'
+        colorScheme='whatsapp'
+        onClick={() => onAdd(setCount(0))}
+      >
+        Agregar al carrito
+      </Button>
     </Flex>
   );
 };

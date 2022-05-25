@@ -2,7 +2,6 @@ import { Flex, Stack } from '@chakra-ui/react';
 import Logo from '../Logo/logo.js';
 import Cartwidget from '../CartWidget/CartWidget';
 
-
 const Navbar = () => {
   return (
     <>
@@ -14,7 +13,7 @@ const Navbar = () => {
         backgroundColor='pink'
       >
         <Logo />
-        
+
         <Stack
           direction={{ base: 'column', sm: 'row' }}
           mt={{ base: 60, sm: 0 }}
@@ -24,7 +23,7 @@ const Navbar = () => {
           <a href='/'>Nosotros</a>
           <a href='/'>Contacto</a>
           <a href='/'>Carrito</a>
-          <Cartwidget/>
+          <Cartwidget />
         </Stack>
       </Flex>
     </>

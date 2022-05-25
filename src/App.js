@@ -6,14 +6,12 @@ import ItemListContainer from './Components/ItemListContainer/ItemListContainer'
 import Header from './Components/Header/Header';
 
 function App() {
-
-   return (
+  return (
     <ChakraProvider>
       <div className='App'>
-        
-        <Header valor={1}/>
+        <Header valor={1} />
         <ItemListContainer greeting='Welcome' />
-        
+
         <Footer />
       </div>
     </ChakraProvider>
