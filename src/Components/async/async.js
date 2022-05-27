@@ -1,4 +1,4 @@
-import productos from '../Items/Items';
+import productos from '../Items/Productos';
 
 export const CustomFetch = () => {
   return new Promise((resolve) => {
