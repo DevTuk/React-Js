@@ -35,7 +35,7 @@ const ItemCount = (props) => {
           <Button
             variant='solid'
             size='md'
-            backgroundColor='pink.300'
+            backgroundColor='#C5CAFF'
             color='gray.800'
             onClick={restar}
           >
@@ -49,7 +49,7 @@ const ItemCount = (props) => {
             variant='solid'
             size='md'
             border={1}
-            backgroundColor='pink.300'
+            backgroundColor='#C5CAFF'
             color='gray.800'
             onClick={sumar}
             disabled={btnActivo}
@@ -62,7 +62,7 @@ const ItemCount = (props) => {
         variant='solid'
         size='md'
         color='gray.800'
-        colorScheme='whatsapp'
+        backgroundColor='#ffbcde'
         onClick={() => onAdd(setCount(0))}
       >
         Agregar al carrito

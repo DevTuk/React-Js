@@ -14,6 +14,7 @@ const ItemListContainer = () => {
   return (
     <>
       <ItemList producto={products} />
+
       {/* <ItemDetail /> // tiene que venir acá, mostrar el detalle del producto */}
     </>
   );

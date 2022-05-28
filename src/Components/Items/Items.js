@@ -1,4 +1,11 @@
-import { Text, Box, Image } from '@chakra-ui/react';
+import {
+  Text,
+  Box,
+  Image,
+  AspectRatio,
+  Skeleton,
+  useBreakpointValue,
+} from '@chakra-ui/react';
 import ItemCount from '../ItemCount/ItemCount';
 
 const Items = (props) => {
@@ -8,32 +15,32 @@ const Items = (props) => {
       flexDirection='column'
       alignItems='center'
       justifyContent='center'
-      p={10}
+      p={4}
+      m={5}
     >
       <Box
         bg='#ffffff'
-        borderRadius='xl'
         width='sm'
         minHeight='sm'
-        border='1px solid lightgrey'
         overflow='hidden'
-        color='blackAlpha.500'
+        // color='blackAlpha.500'
         textAlign='center'
-        backgroundColor='gray.300'
+        bgGradient='linear(to-b, green.300, white)'
         fontWeight='bold'
+        rounded={50}
       >
-        <Box>
+        <AspectRatio ratio={4 / 5}>
           <Image
-            size='100px'
-            fallbackSrc='https://via.placeholder.com/150'
             src={props.imagen}
-            width='100%'
-            height='auto'
-            minHeight='245px'
-            borderRadius='xl'
+            alt={props.nombre}
+            draggable='false'
+            fallback={<Skeleton />}
+            borderRadius={useBreakpointValue({ base: 'md', md: 'xl' })}
+            roundedBottom={40}
           />
-        </Box>
-        <Box p={5} pb={8} textAlign='center' color='gray.800'>
+        </AspectRatio>
+
+        <Box p={4} pb={6} textAlign='center' color='gray.800'>
           <Text fontWeight='bold' fontSize='xl' color='gray.800'>
             {props.nombre}
           </Text>
