@@ -8,10 +8,10 @@ export const CustomFetch = () => {
   });
 };
 
-export const getProductsId = (id) => {
+export const getProductsById = (id) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(productos.filter((producto) => producto.id === id));
+      resolve(productos.filter((productos) => productos.id === id));
     }, 2000);
   });
-}
+};
