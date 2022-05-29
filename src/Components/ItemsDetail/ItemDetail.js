@@ -7,8 +7,6 @@ import {
   Text,
   Image,
   Icon,
-  createIcon,
-  IconProps,
   useColorModeValue,
 } from '@chakra-ui/react';
 import ItemCount from '../ItemCount/ItemCount';
