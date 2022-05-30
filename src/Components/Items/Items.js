@@ -17,6 +17,7 @@ const Items = (props) => {
       justifyContent='center'
       p={4}
       m={5}
+      
     >
       <Box
         bg='#ffffff'
@@ -28,6 +29,7 @@ const Items = (props) => {
         bgGradient='linear(to-b, green.300, white)'
         fontWeight='bold'
         rounded={50}
+        
       >
         <AspectRatio ratio={4 / 5}>
           <Image

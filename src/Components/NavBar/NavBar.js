@@ -16,6 +16,7 @@ const Navbar = () => {
         position='sticky'
         top= '1'
         zIndex={1}
+        
       >
         <Logo />
 
