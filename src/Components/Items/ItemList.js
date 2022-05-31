@@ -6,13 +6,7 @@ const ItemList = ({ producto }) => {
     <>
       <Grid templateColumns='repeat(4, 1fr)' gap={1}>
         {producto.map((producto) => (
-           <Items
-            key={producto.id}
-            nombre={producto.nombre}
-            precio={producto.precio}
-            stock={producto.stock}
-            imagen={producto.imagen}
-          />
+          <Items key={producto.id} {...producto} />
         ))}
       </Grid>
     </>

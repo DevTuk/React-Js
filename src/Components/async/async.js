@@ -15,3 +15,13 @@ export const getProductsById = (id) => {
     }, 2000);
   });
 };
+
+export const productsByCategory = (categoryId) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(
+        productos.filter((productos) => productos.category === categoryId)
+      );
+    }, 2000);
+  });
+};

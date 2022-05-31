@@ -1,15 +1,23 @@
 import { useEffect, useState } from 'react';
 import ItemList from '../Items/ItemList';
-import { CustomFetch } from '../async/async';
+import { CustomFetch, productsByCategory } from '../async/async';
+import { useParams } from 'react-router-dom';
 
 const ItemListContainer = () => {
   const [products, setProductos] = useState([]);
+  const { categoryId } = useParams();
 
   useEffect(() => {
-    CustomFetch().then((response) => {
-      setProductos(response);
-    });
-  }, []);
+    if (!categoryId) {
+      CustomFetch().then((response) => {
+        setProductos(response);
+      });
+    } else {
+      productsByCategory(categoryId).then((response) => {
+        setProductos(response);
+      });
+    }
+  }, [categoryId]);
 
   return (
     <>

@@ -1,4 +1,5 @@
 import {
+  AspectRatio,
   Container,
   Stack,
   Flex,
@@ -11,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import ItemCount from '../ItemCount/ItemCount';
 
-const ItemDetail = (props) => {
+const ItemDetail = ({ stock, imagen, nombre, precio, descripcion }) => {
   return (
     <Container maxW={'7xl'} border='2px solid #c5caff' rounded='50'>
       <Stack
@@ -40,22 +41,22 @@ const ItemDetail = (props) => {
                 zIndex: -1,
               }}
             >
-              {props.nombre}
+              {nombre}
             </Text>
             <br />
             <Text marginLeft={5} as={'span'} color={'#c5caff'}>
-              {props.precio}
+              {precio}
             </Text>
           </Heading>
-          <Text color={'gray.500'}>{props.descripcion}</Text>
+          <Text color={'gray.500'}>{descripcion}</Text>
           <Text color={'gray.500'} marginLeft={5}>
-            Stock Disponible : {props.stock}
+            Stock Disponible : {stock}
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: 'column', sm: 'row' }}
           >
-            <ItemCount stock={props.stock} />
+            <ItemCount stock={stock} />
           </Stack>
         </Stack>
         <Flex
@@ -75,6 +76,7 @@ const ItemDetail = (props) => {
             zIndex={-1}
             color={useColorModeValue('#ffbcde', '#ffbcde')}
           />
+
           <Box
             position={'relative'}
             height={'300px'}
@@ -83,14 +85,16 @@ const ItemDetail = (props) => {
             width={'full'}
             overflow={'hidden'}
           >
-            <Image
-              alt={'Hero Image'}
-              fit={'cover'}
-              align={'center'}
-              w={'100%'}
-              h={'100%'}
-              src={props.imagen}
-            />
+            <AspectRatio ratio={4 / 3}>
+              <Image
+                alt={'Hero Image'}
+                fit={'cover'}
+                align={'center'}
+                w={'100%'}
+                h={'100%'}
+                src={imagen}
+              />
+            </AspectRatio>
           </Box>
         </Flex>
       </Stack>
