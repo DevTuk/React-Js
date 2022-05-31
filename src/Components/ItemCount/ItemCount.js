@@ -29,9 +29,9 @@ const ItemCount = (props) => {
     }
   }
   return (
-    <Flex direction='column' marginTop='-12'>
+    <Flex direction='column'>
       <Box>
-        <Flex justifyContent='center' alignItems='center' m={5}>
+        <Flex justifyContent='center' align={'center'} m={5}>
           <Button
             variant='solid'
             size='md'

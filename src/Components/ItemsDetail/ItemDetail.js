@@ -9,6 +9,8 @@ import {
   Image,
   Icon,
   useColorModeValue,
+  Skeleton,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import ItemCount from '../ItemCount/ItemCount';
 
@@ -17,11 +19,57 @@ const ItemDetail = ({ stock, imagen, nombre, precio, descripcion }) => {
     <Container maxW={'7xl'} border='2px solid #c5caff' rounded='50'>
       <Stack
         align={'center'}
+        textAlign={'center'}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 28 }}
         direction={{ base: 'column', md: 'row' }}
       >
-        <Stack marginLeft={5} flex={1} spacing={{ base: 5, md: 10 }}>
+        <Flex
+          flex={1}
+          justify={'center'}
+          align={'center'}
+          position={'relative'}
+          w={'full'}
+          marginRight={5}
+        >
+          <Blob
+            w={'150%'}
+            h={'150%'}
+            position={'absolute'}
+            top={'-20%'}
+            left={0}
+            zIndex={-1}
+            color={useColorModeValue('#ffbcde', '#ffbcde')}
+          />
+          <Box
+            position={'relative'}
+            bg='#ffffff'
+            width='sm'
+            minHeight='sm'
+            overflow='hidden'
+            textAlign='center'
+            bgGradient='linear(to-b, green.300, white)'
+            fontWeight='bold'
+            rounded={50}
+          >
+            <AspectRatio ratio={3 / 3}>
+              <Image
+                src={imagen}
+                alt={nombre}
+                draggable='false'
+                fallback={<Skeleton />}
+                borderRadius={useBreakpointValue({ base: 'md', md: 'xl' })}
+                roundedBottom={40}
+              />
+            </AspectRatio>
+          </Box>
+        </Flex>
+        <Stack
+          marginLeft={5}
+          align={'center'}
+          flex={1}
+          spacing={{ base: 5, md: 10 }}
+        >
           <Heading
             lineHeight={1.1}
             fontWeight={600}
@@ -48,6 +96,7 @@ const ItemDetail = ({ stock, imagen, nombre, precio, descripcion }) => {
               {precio}
             </Text>
           </Heading>
+
           <Text color={'gray.500'}>{descripcion}</Text>
           <Text color={'gray.500'} marginLeft={5}>
             Stock Disponible : {stock}
@@ -59,44 +108,6 @@ const ItemDetail = ({ stock, imagen, nombre, precio, descripcion }) => {
             <ItemCount stock={stock} />
           </Stack>
         </Stack>
-        <Flex
-          flex={1}
-          justify={'center'}
-          align={'center'}
-          position={'relative'}
-          w={'full'}
-          marginRight={5}
-        >
-          <Blob
-            w={'150%'}
-            h={'150%'}
-            position={'absolute'}
-            top={'-20%'}
-            left={0}
-            zIndex={-1}
-            color={useColorModeValue('#ffbcde', '#ffbcde')}
-          />
-
-          <Box
-            position={'relative'}
-            height={'300px'}
-            rounded={'2xl'}
-            boxShadow={'2xl'}
-            width={'full'}
-            overflow={'hidden'}
-          >
-            <AspectRatio ratio={4 / 3}>
-              <Image
-                alt={'Hero Image'}
-                fit={'cover'}
-                align={'center'}
-                w={'100%'}
-                h={'100%'}
-                src={imagen}
-              />
-            </AspectRatio>
-          </Box>
-        </Flex>
       </Stack>
     </Container>
   );
