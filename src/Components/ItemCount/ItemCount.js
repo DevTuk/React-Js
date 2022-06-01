@@ -1,4 +1,4 @@
-import { Text, Flex, Button, Box } from '@chakra-ui/react';
+import { Text, Flex, Button, Box, useToast } from '@chakra-ui/react';
 import { useState } from 'react';
 
 const ItemCount = (props) => {
@@ -21,13 +21,31 @@ const ItemCount = (props) => {
     }
   };
 
+  const toast = useToast();
+
   function onAdd() {
     if (count <= 0) {
-      alert('El carrito esta vacío');
+      toast({
+        title: 'Error.',
+        description: 'el carrito esta vacío',
+        status: 'warning',
+        duration: 4000,
+        isClosable: true,
+        position: 'bottom-right',
+      });
     } else {
-      alert('Agregaste ' + count + ' productos al carrito');
+      toast({
+        title: 'Exitoso',
+        description: 'Producto agregado al carrito',
+        status: 'success',
+        duration: 4000,
+        isClosable: true,
+        position: 'bottom-right',
+      });
+      setCount(0);
     }
   }
+
   return (
     <Flex direction='column'>
       <Box>
@@ -63,7 +81,7 @@ const ItemCount = (props) => {
         size='md'
         color='gray.800'
         backgroundColor='#ffbcde'
-        onClick={() => onAdd(setCount(0))}
+        onClick={() => onAdd()}
       >
         Agregar al carrito
       </Button>
