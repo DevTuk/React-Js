@@ -46,7 +46,7 @@ const Navbar = () => {
               minWidth='240px'
             >
               <MenuItemOption>
-                <Link to='/category/buzos'>Buzos</Link>
+                <Link to='/category/buzos'>Buzos</Link> 
               </MenuItemOption>
               <MenuDivider />
               <MenuItemOption>
