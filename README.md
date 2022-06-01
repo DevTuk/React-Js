@@ -71,3 +71,9 @@ En la pagina principal encontramos la Navbar la cual contiene el nombre del siti
 - CartWidget: Es el encargado de mostrar cuantos productos hay en el carrito. Si esta en 0 no se muestra.
 
 - Loader: Componente del Loader es el encargado de renderizar nuestro spinner.
+
+- async: Componente donde encontramos todas las funciones asincronas para obtener productos, filtrar por categoría y filtrar por ID.
+
+- Header: Componente que renderiza nuestro componente Nav
+
+- Footer: Muestra un footer en el pie de nuestra página.
