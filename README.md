@@ -29,7 +29,7 @@ npm start
 
 - [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) - Routing en el browser.
 
-- [Chakra UI](https://react-bootstrap.github.io) - Utilizado para el maquetar y dar estilos al sitio.
+- [Chakra UI](https://react-bootstrap.github.io) - Utilizado para maquetar y dar estilos al sitio.
 
 #### Colección products:
 
