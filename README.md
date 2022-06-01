@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Artemi Ecommerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ecommerce de ropa de diseño independiente.
 
-## Available Scripts
+## Instalación Git Clone
 
-In the project directory, you can run:
+Para realizar la clonacion del proyecto, ejecutar en la consola:
 
-### `npm start`
+```bash
+  git clone https://github.com/DevTuk/React-Js.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Y ejecutar :
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+npm start
+```
 
-### `npm test`
+## Desarrollado con
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
 
-### `npm run build`
+## Demostracion del sitio
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Alt Text](./public/Artemi.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Dependencias NPM
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) - Routing en el browser.
+- [React-toastify](https://www.npmjs.com/package/react-toastify) - Utilizacion en las notificaciones del sitio.
+- [Chakra UI](https://react-bootstrap.github.io) - Utilizado para el maquetar y dar estilos al sitio.
 
-### `npm run eject`
+#### Colección products:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Documento: id generado automático
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| CAMPO       | TIPO   | VALOR                          |
+| ----------- | ------ | ------------------------------ |
+| category    | string | categoría a la que pertenece   |
+| descripcion | string | descripción del producto       |
+| imagen      | string | ruta de la imagen del producto |
+| nombre      | string | nombre del producto            |
+| precio      | number | precio del producto            |
+| stock       | number | cantidad en stock              |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Análisis de los Componentes
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Nuestro home muestra en forma de grilla todos los productos del sitio web. La ruta inicial es '/' e.
 
-## Learn More
+- ItemListContainer: Componente donde se muestran todos los productos y filtramos por categoria, agregamos un Spinner para mostrar cuando los productos se estar cargando.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- ItemList: Componente que nos permite traer todos los datos desde el componente Item a traves de un map.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Item: Componente que se visualiza en cada card de producto donde aparecen los datos de cada producto. Ademas del Link para ir al detalle del mismo.
 
-### Code Splitting
+La ruta '/detail/:productId' nos permite ir al detalle del producto seleccionado en ItemListContainer. Donde podemos ver el nombre, precio, imagen, descripcion, su stock y la opción para agregarlo al carrito.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- ItemDetailContainer: Componente que usamos para filtrar por ID cada producto y desestructuramos su contenido para enviarlo a nuestro ItemListDetail donde desestructuramos su contenido para ser recibido en nuestro ItemDetail para ser mostrado al usuario.
 
-### Analyzing the Bundle Size
+- ItemDetail: Componente encargado de mostrar los detalles del producto en pantalla, tiene incorporado el componente de ItemCount y una notificacion al agregar nuevo producto al carrito.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- ItemCount: Componente que contiene las funciones de ambos botones sumar o restar producto. Funciona según stock del producto seleccionado, el botón de agregar cantidad se bloquea al superar el stock máximo del producto y se vuelve a habilitar cuando la selección es menor al stock de cada producto. El botón de agregar al carrito entrega un mensaje de alerta de la cantidad de productos seleccionados y a su vez resetea el contador a cero.
 
-### Making a Progressive Web App
+En la pagina principal encontramos la Navbar la cual contiene el nombre del sitio, y las categorias de los productos.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Navbar: Contiene el logo y se puede navegar por las distintas categorias de los productos, y contiene el CartWidget que a futuro nos mostrara la cantidad de productos agregados al carrito.
 
-### Advanced Configuration
+- CartWidget: Es el encargado de mostrar cuantos productos hay en el carrito. Si esta en 0 no se muestra.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Loader: Componente del Loader es el encargado de renderizar nuestro spinner.
