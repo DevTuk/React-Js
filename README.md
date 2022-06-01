@@ -28,7 +28,7 @@ npm start
 ## Dependencias NPM
 
 - [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) - Routing en el browser.
-- [React-toastify](https://www.npmjs.com/package/react-toastify) - Utilizacion en las notificaciones del sitio.
+
 - [Chakra UI](https://react-bootstrap.github.io) - Utilizado para el maquetar y dar estilos al sitio.
 
 #### Colección products:
