@@ -58,6 +58,8 @@ La ruta '/detail/:productId' nos permite ir al detalle del producto seleccionado
 
 - ItemDetailContainer: Componente que usamos para filtrar por ID cada producto y desestructuramos su contenido para enviarlo a nuestro ItemListDetail donde desestructuramos su contenido para ser recibido en nuestro ItemDetail para ser mostrado al usuario.
 
+- ItemDetailList: Componente que nos permite traer todos los datos desde el componente ItemDetail a traves de un map.
+
 - ItemDetail: Componente encargado de mostrar los detalles del producto en pantalla, tiene incorporado el componente de ItemCount y una notificacion al agregar nuevo producto al carrito.
 
 - ItemCount: Componente que contiene las funciones de ambos botones sumar o restar producto. Funciona según stock del producto seleccionado, el botón de agregar cantidad se bloquea al superar el stock máximo del producto y se vuelve a habilitar cuando la selección es menor al stock de cada producto. El botón de agregar al carrito entrega un mensaje de alerta de la cantidad de productos seleccionados y a su vez resetea el contador a cero.
