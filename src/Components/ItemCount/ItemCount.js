@@ -26,7 +26,7 @@ const ItemCount = (props) => {
   function onAdd() {
     if (count <= 0) {
       toast({
-        title: 'Error.',
+        title: 'Error',
         description: 'el carrito esta vacío',
         status: 'warning',
         duration: 4000,

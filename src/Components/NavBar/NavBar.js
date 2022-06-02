@@ -39,14 +39,14 @@ const Navbar = () => {
           spacing='6'
         >
           <Menu closeOnSelect={true}>
-            <MenuButton backgroundColor='#FFBCDE'>Categorias</MenuButton>
+            <MenuButton>Categorias</MenuButton>
             <MenuList
               backgroundColor='#FFBCDE'
               border='1px solid #C5CAFF'
               minWidth='240px'
             >
               <MenuItemOption>
-                <Link to='/category/buzos'>Buzos</Link> 
+                <Link to='/category/buzos'>Buzos</Link>
               </MenuItemOption>
               <MenuDivider />
               <MenuItemOption>
