@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const ItemDetail = ({ stock, imagen, nombre, precio, descripcion }) => {
-  const [cantidad, setCantidad] = useState(0);
+  const [cantidad, setCantidad] = useState(0); //en cantidad se almacena la cantidad de productos que se van a comprar, proveniente de ItemCount.
   const toast = useToast();
 
   const handleOnAdd = (count) => {
