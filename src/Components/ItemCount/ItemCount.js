@@ -1,8 +1,8 @@
-import { Text, Flex, Button, Box, useToast } from '@chakra-ui/react';
+import { Text, Flex, Button, Box } from '@chakra-ui/react';
 import { useState } from 'react';
 
-const ItemCount = (props) => {
-  const [count, setCount] = useState(0);
+const ItemCount = ({ stock, onAdd, countInicial = 1 }) => {
+  const [count, setCount] = useState(countInicial);
   const [btnActivo, setBtnActivo] = useState(false);
 
   const restar = () => {
@@ -11,41 +11,17 @@ const ItemCount = (props) => {
       setBtnActivo(false);
     }
   };
-
   const sumar = () => {
-    if (count < props.stock) {
+    if (count < stock) {
       setCount(count + 1);
     }
-    if (count >= props.stock) {
+    if (count >= stock) {
       setBtnActivo(true);
     }
   };
-
-  const toast = useToast();
-
-  function onAdd() {
-    if (count <= 0) {
-      toast({
-        title: 'Error',
-        description: 'el carrito esta vacío',
-        status: 'warning',
-        duration: 4000,
-        isClosable: true,
-        position: 'bottom-right',
-      });
-    } else {
-      toast({
-        title: 'Exitoso',
-        description: 'Producto agregado al carrito',
-        status: 'success',
-        duration: 4000,
-        isClosable: true,
-        position: 'bottom-right',
-      });
-      setCount(0);
-    }
-  }
-
+  const comprar = () => {
+    onAdd(count);
+  };
   return (
     <Flex direction='column'>
       <Box>
@@ -75,16 +51,16 @@ const ItemCount = (props) => {
             +
           </Button>
         </Flex>
+        <Button
+          variant='solid'
+          size='md'
+          color='gray.800'
+          backgroundColor='#ffbcde'
+          onClick={comprar}
+        >
+          Agregar al carrito
+        </Button>
       </Box>
-      <Button
-        variant='solid'
-        size='md'
-        color='gray.800'
-        backgroundColor='#ffbcde'
-        onClick={() => onAdd()}
-      >
-        Agregar al carrito
-      </Button>
     </Flex>
   );
 };

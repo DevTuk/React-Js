@@ -2,19 +2,38 @@ import {
   AspectRatio,
   Container,
   Stack,
+  Button,
   Flex,
   Box,
   Heading,
   Text,
   Image,
   Icon,
+  useToast,
   useColorModeValue,
   Skeleton,
   useBreakpointValue,
 } from '@chakra-ui/react';
 import ItemCount from '../ItemCount/ItemCount';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const ItemDetail = ({ stock, imagen, nombre, precio, descripcion }) => {
+  const [cantidad, setCantidad] = useState(0);
+  const toast = useToast();
+
+  const handleOnAdd = (count) => {
+    toast({
+      title: 'Exitoso',
+      description: 'Producto agregado al carrito',
+      status: 'success',
+      duration: 4000,
+      isClosable: true,
+      position: 'bottom-right',
+    });
+    setCantidad(count);
+  };
+
   return (
     <Container maxW={'7xl'} border='2px solid #c5caff' rounded='50'>
       <Stack
@@ -105,7 +124,21 @@ const ItemDetail = ({ stock, imagen, nombre, precio, descripcion }) => {
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: 'column', sm: 'row' }}
           >
-            <ItemCount stock={stock} />
+            {cantidad > 0 ? (
+              <Link to='/cart'>
+                {' '}
+                <Button
+                  variant='solid'
+                  size='md'
+                  color='gray.800'
+                  backgroundColor='#ffbcde'
+                >
+                  Ir al carrito
+                </Button>
+              </Link>
+            ) : (
+              <ItemCount stock={stock} onAdd={handleOnAdd} />
+            )}
           </Stack>
         </Stack>
       </Stack>
