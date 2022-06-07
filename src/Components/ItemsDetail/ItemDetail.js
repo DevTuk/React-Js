@@ -125,17 +125,31 @@ const ItemDetail = ({ stock, imagen, nombre, precio, descripcion }) => {
             direction={{ base: 'column', sm: 'row' }}
           >
             {cantidad > 0 ? (
-              <Link to='/cart'>
-                {' '}
-                <Button
-                  variant='solid'
-                  size='md'
-                  color='gray.800'
-                  backgroundColor='#ffbcde'
-                >
-                  Ir al carrito
-                </Button>
-              </Link>
+              <Flex>
+                <Link to='/cart'>
+                  {' '}
+                  <Button
+                    variant='solid'
+                    size='md'
+                    color='gray.800'
+                    backgroundColor='#ffbcde'
+                    mx={3}
+                  >
+                    Ir al carrito
+                  </Button>
+                </Link>
+                <Link to='/'>
+                  {' '}
+                  <Button
+                    variant='solid'
+                    size='md'
+                    color='gray.800'
+                    backgroundColor='#A9F88B'
+                  >
+                    Seguir comprando
+                  </Button>
+                </Link>
+              </Flex>
             ) : (
               <ItemCount stock={stock} onAdd={handleOnAdd} />
             )}

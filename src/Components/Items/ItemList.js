@@ -7,6 +7,7 @@ const ItemList = ({ producto }) => {
       <Grid
         templateColumns={{ md: 'repeat(4, 1fr)', base: 'repeat(1, 1fr)' }}
         gap={2}
+        mx={-8}
       >
         {producto.map((producto) => (
           <Items key={producto.id} {...producto} />
