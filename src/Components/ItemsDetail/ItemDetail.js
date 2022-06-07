@@ -16,13 +16,16 @@ import {
 } from '@chakra-ui/react';
 import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { Context } from '../../App';
 
-const ItemDetail = ({ stock, imagen, nombre, precio, descripcion }) => {
+const ItemDetail = ({ id, stock, imagen, nombre, precio, descripcion }) => {
   const [cantidad, setCantidad] = useState(0); //en cantidad se almacena la cantidad de productos que se van a comprar, proveniente de ItemCount.
   const toast = useToast();
 
-  const handleOnAdd = (count) => {
+  const { setCart, cart } = useContext(Context);
+
+  const handleOnAdd = (cantidad) => {
     toast({
       title: 'Exitoso',
       description: 'Producto agregado al carrito',
@@ -31,7 +34,8 @@ const ItemDetail = ({ stock, imagen, nombre, precio, descripcion }) => {
       isClosable: true,
       position: 'bottom-right',
     });
-    setCantidad(count);
+    setCantidad(cantidad);
+    setCart([...cart, { id, nombre, precio, cantidad }]);
   };
 
   return (
