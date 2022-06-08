@@ -5,23 +5,12 @@ import Footer from './Components/Footer/Footer';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Cart from './Components/Cart/Cart';
-import { useState, createContext } from 'react';
-
-export const Context = createContext();
+import { CartContextProvider } from './Context/CartContext';
 
 function App() {
-  const [cart, setCart] = useState([]);
-  console.log(cart);
-  const addItems = (productToAdd) => {
-    setCart([...cart, productToAdd]);
-  };
-  const removeItems = (productToRemove) => {
-    setCart(cart.filter((product) => product.id !== productToRemove.id));
-  };
-
   return (
     <ChakraProvider>
-      <Context.Provider value={{ setCart, cart }}>
+      <CartContextProvider>
         <BrowserRouter>
           <Header />
           <Routes>
@@ -39,7 +28,7 @@ function App() {
           </Routes>
         </BrowserRouter>
         <Footer />
-      </Context.Provider>
+      </CartContextProvider>
     </ChakraProvider>
   );
 }

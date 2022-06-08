@@ -17,25 +17,23 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <>
-      <Box  m={5}
-          h='80px'
-          
-          px='40px'
-          alignItems='center'
-          backgroundColor='#FFBCDE'
-          rounded={50}
-          position='sticky'
-          top='1'
-          display='flex'
-          justifyContent='space-around'
-          zIndex={1}>
-          
+      <Box
+        m={5}
+        h='80px'
+        px='40px'
+        alignItems='center'
+        backgroundColor='#FFBCDE'
+        rounded={50}
+        position='sticky'
+        top='1'
+        display='flex'
+        justifyContent='space-around'
+        zIndex={1}
+      >
         <Link to='/'>
           <Logo />
         </Link>
-        <Flex
-         justifyContent='space-around'
-        >
+        <Flex justifyContent='space-around'>
           <Stack
             direction={{ base: 'column', sm: 'row' }}
             divider={<StackDivider borderColor='black' />}
@@ -65,7 +63,7 @@ const Navbar = () => {
 
             <Link to='/'>Nosotros</Link>
             <Link to='/'>Contacto</Link>
-            <Link to='/'>Carrito</Link>
+            <Link to='/cart'>Carrito</Link>
             <Cartwidget />
           </Stack>
         </Flex>

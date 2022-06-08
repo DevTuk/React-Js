@@ -17,13 +17,13 @@ import {
 import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
-import { Context } from '../../App';
+import CartContext from '../../Context/CartContext';
 
 const ItemDetail = ({ id, stock, imagen, nombre, precio, descripcion }) => {
   const [cantidad, setCantidad] = useState(0); //en cantidad se almacena la cantidad de productos que se van a comprar, proveniente de ItemCount.
   const toast = useToast();
 
-  const { setCart, cart } = useContext(Context);
+  const { addItem } = useContext(CartContext);
 
   const handleOnAdd = (cantidad) => {
     toast({
@@ -35,7 +35,7 @@ const ItemDetail = ({ id, stock, imagen, nombre, precio, descripcion }) => {
       position: 'bottom-right',
     });
     setCantidad(cantidad);
-    setCart([...cart, { id, nombre, precio, cantidad }]);
+    addItem({ id, nombre, precio, cantidad, imagen });
   };
 
   return (
