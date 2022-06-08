@@ -77,3 +77,5 @@ En la pagina principal encontramos la Navbar la cual contiene el nombre del siti
 - Header: Componente que renderiza nuestro componente Nav
 
 - Footer: Muestra un footer en el pie de nuestra página.
+
+- CartContextProvider: Inyecta nuestras funciones para mantener el estado de compra en el carrito. AddItems, agrega el item seleccionado al carrito y comprueba por medio de isInCart si el item ya se encuentra en el carrito, si es verdadero solo suma la cantidad del mismo. removeItems elimina el item seleccionado del carrito de compras. removeCart vacía todo el carrito de compras. getQuantity recibe la cantidad de productos seleccionados. totalCart se encarga de sumar el total a pagar según la cantidad de productos agregados y el precio.
