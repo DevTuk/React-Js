@@ -34,7 +34,7 @@ const ItemDetail = ({ id, stock, imagen, nombre, precio, descripcion }) => {
       position: 'bottom-right',
     });
     setCantidad(cantidad);
-    addItem({ id, nombre, precio, cantidad, imagen });
+    addItem({ id, nombre, precio, cantidad, imagen, stock });
   };
 
   return (

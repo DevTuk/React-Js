@@ -19,7 +19,6 @@ const Cart = () => {
           display='flex'
           flexDirection='column'
           backgroundColor='white'
-          boxShadow='sm'
           px='100px'
           width={'100%'}
         >
@@ -27,7 +26,6 @@ const Cart = () => {
             <Box
               key={item.id}
               backgroundColor='white'
-              boxShadow='sm'
               rounded={10}
               border='1px solid #c5caff'
               m={1}
@@ -76,10 +74,10 @@ const Cart = () => {
             </Box>
           ))}
         </Box>
-        <Flex flexDirection={'column'}>
+
+        <Flex flexDirection={'column'} width='50%'>
           <Box
             backgroundColor='white'
-            boxShadow='sm'
             border='1px solid #c5caff'
             alignItems='center'
             textAlign='center'
@@ -90,11 +88,7 @@ const Cart = () => {
             pb={5}
             rounded={10}
           >
-            <Text
-              fontWeight={800}
-              fontSize={{ base: '2xl', sm: '3xl' }}
-              borderBottom={'1px solid #c5caff'}
-            >
+            <Text fontWeight={800} fontSize={{ base: '2xl', sm: '3xl' }}>
               Detalle de Compra
             </Text>
 
@@ -107,6 +101,7 @@ const Cart = () => {
                   alignItems='center'
                   justifyContent='space-between'
                   borderBottom={'1px solid #c5caff'}
+                  m={2}
                 >
                   {' '}
                   <Text>{item.cantidad}</Text>
