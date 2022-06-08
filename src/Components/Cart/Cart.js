@@ -3,7 +3,7 @@ import CartContext from '../../Context/CartContext';
 import { Box, Stack, Text, Image, Button, Flex } from '@chakra-ui/react';
 
 const Cart = () => {
-  const { cart, totalCart, removeItems } = useContext(CartContext);
+  const { cart, totalCart, removeItems, removeCart } = useContext(CartContext);
 
   return (
     <>
@@ -115,6 +115,9 @@ const Cart = () => {
                 </Box>
               ))}
             </Box>
+            <Button mt={6} onClick={() => removeCart()}>
+              Vaciar Carrito
+            </Button>
           </Box>
           <Box
             border='1px solid #c5caff'
