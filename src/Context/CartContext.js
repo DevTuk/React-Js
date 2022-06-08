@@ -4,7 +4,7 @@ const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  
+ 
   
 
   const addItem = (productToAdd) => {
@@ -16,6 +16,7 @@ export const CartContextProvider = ({ children }) => {
       );
       productInCart.cantidad += productToAdd.cantidad;
       setCart([...cart]);
+     
     }
   };
   const isInCart = (id) => {

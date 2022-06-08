@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import CartContext from '../../Context/CartContext';
 
 const Cartwidget = (props) => {
-  const { getQuantity, totalCart } = useContext(CartContext);
+  const { getQuantity } = useContext(CartContext);
   const cantidad = getQuantity(props.product);
   return (
     <>
@@ -14,9 +14,8 @@ const Cartwidget = (props) => {
           <FontAwesomeIcon icon={faCartShopping} />
         </Box>
         <Box>
-          <Text textAlign='center'>{cantidad}</Text>
+          {cantidad === 0 ? '' : <Text textAlign='center'>{cantidad}</Text>}
         </Box>
-        {/* <Box ml='5px'>{totalCart()}</Box> */}
       </Flex>
     </>
   );
