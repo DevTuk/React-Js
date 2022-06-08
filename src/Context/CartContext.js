@@ -4,7 +4,6 @@ const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  console.log(cart);
 
   const addItem = (productToAdd) => {
     if (!isInCart(productToAdd.id)) {
@@ -21,23 +20,26 @@ export const CartContextProvider = ({ children }) => {
     return cart.find((product) => product.id === id);
   };
 
-  const removeItems = (e) => {
-    setCart([]);
+  const removeItems = (id) => {
+    const newCart = cart.filter((product) => product.id !== id);
+    setCart(newCart);
   };
 
-  const getQuantity = (getQuantity) => {
+  const getQuantity = () => {
     let acumulador = 0;
     cart.forEach((productToAdd) => {
       acumulador += productToAdd.cantidad;
     });
     return acumulador;
   };
+
   const totalCart = () => {
-    let total = 0;
-    cart.forEach((item) => {
-      const precio = Number(item.precio.replace('$', ''));
-      total = total + precio * item.cantidad;
+    let acumulador = 0;
+    cart.forEach((productToAdd) => {
+      const precio = Number(productToAdd.precio.replace('$', ''));
+      acumulador += precio * productToAdd.cantidad;
     });
+    return '$' + acumulador;
   };
 
   return (

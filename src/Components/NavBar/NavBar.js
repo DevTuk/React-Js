@@ -9,7 +9,6 @@ import {
   Menu,
   MenuDivider,
 } from '@chakra-ui/react';
-
 import Logo from '../Logo/logo.js';
 import Cartwidget from '../CartWidget/CartWidget';
 import { Link } from 'react-router-dom';

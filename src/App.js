@@ -13,6 +13,7 @@ function App() {
       <CartContextProvider>
         <BrowserRouter>
           <Header />
+
           <Routes>
             <Route
               path='/'

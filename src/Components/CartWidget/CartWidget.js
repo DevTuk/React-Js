@@ -1,19 +1,22 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import CartContext from '../../Context/CartContext';
 
 const Cartwidget = (props) => {
-  const { getQuantity } = useContext(CartContext);
+  const { getQuantity, totalCart } = useContext(CartContext);
   const cantidad = getQuantity(props.product);
   return (
     <>
-      <Flex>
-        <Box>
+      <Flex justifyContent='space-evenly'>
+        <Box mx={2}>
           <FontAwesomeIcon icon={faCartShopping} />
         </Box>
-        <Box ml='10px'>{cantidad}</Box>
+        <Box>
+          <Text textAlign='center'>{cantidad}</Text>
+        </Box>
+        {/* <Box ml='5px'>{totalCart()}</Box> */}
       </Flex>
     </>
   );
