@@ -1,23 +1,33 @@
-import ItemListDetail from '../ItemsDetail/itemListDetail';
+import ItemDetail from '../ItemsDetail/ItemDetail';
 import { useEffect, useState } from 'react';
-import { getProductsById } from '../async/async';
+// import { getProductsById } from '../async/async';
 import { useParams } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
 
+import { getDoc, doc } from 'firebase/firestore';
+import { db } from '../../Services/Firebase';
+
 const ItemDetailContainer = () => {
   const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const { prodId } = useParams();
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    getProductsById(prodId).then((response) => {
-      setProductos(response);
-      setLoading(false);
-    });
+        getDoc(doc(db, 'Productos', prodId))
+      .then((response) => {
+        const productos = { id: response.id, ...response.data() };
+        setProductos(productos);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [prodId]);
 
-  return <>{loading ? <Loader /> : <ItemListDetail detail={productos} />}</>;
+  return <>{loading ? <Loader /> : <ItemDetail {...productos} />}</>;
 };
 
 export default ItemDetailContainer;

@@ -22,7 +22,7 @@ import CartContext from '../../Context/CartContext';
 const ItemDetail = ({ id, stock, imagen, nombre, precio, descripcion }) => {
   const [cantidad, setCantidad] = useState(0); //en cantidad se almacena la cantidad de productos que se van a comprar, proveniente de ItemCount.
   const toast = useToast();
-  const { addItem } = useContext(CartContext);
+  const { addItem, getProduct } = useContext(CartContext);
 
   const handleOnAdd = (cantidad) => {
     toast({
@@ -34,7 +34,7 @@ const ItemDetail = ({ id, stock, imagen, nombre, precio, descripcion }) => {
       position: 'bottom-right',
     });
     setCantidad(cantidad);
-    addItem({ id, nombre, precio, cantidad, imagen, stock });
+    addItem({ id, stock, imagen, nombre, precio, descripcion, cantidad });
   };
 
   return (
@@ -154,7 +154,11 @@ const ItemDetail = ({ id, stock, imagen, nombre, precio, descripcion }) => {
                 </Link>
               </Flex>
             ) : (
-              <ItemCount stock={stock} onAdd={handleOnAdd} />
+              <ItemCount
+                stock={stock}
+                onAdd={handleOnAdd}
+                initial={getProduct(id)?.cantidad}
+              />
             )}
           </Stack>
         </Stack>
