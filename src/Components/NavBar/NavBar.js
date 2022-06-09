@@ -62,8 +62,9 @@ const Navbar = () => {
 
             <Link to='/'>Nosotros</Link>
             <Link to='/'>Contacto</Link>
-            <Link to='/cart'>Carrito</Link>
-            <Cartwidget />
+            <Link to='/cart'>
+              <Cartwidget />
+            </Link>
           </Stack>
         </Flex>
       </Box>
