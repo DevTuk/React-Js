@@ -1,8 +1,8 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import Header from './Components/Header/Header';
-import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
-import Footer from './Components/Footer/Footer';
-import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
+import ItemListContainer from './Components/ItemListContainer/itemListContainer';
+import Footer from './Components/Footer/footer';
+import ItemDetailContainer from './Components/ItemDetailContainer/itemDetailContainer';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Cart from './Components/Cart/Cart';
 import { CartContextProvider } from './Context/CartContext';
