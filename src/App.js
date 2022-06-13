@@ -1,6 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import Header from './Components/Header/Header';
-import ItemListContainer from './Components/ItemListContainer/itemListContainer';
+import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
 import Footer from './Components/Footer/footer';
 import ItemDetailContainer from './Components/ItemDetailContainer/itemDetailContainer';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
