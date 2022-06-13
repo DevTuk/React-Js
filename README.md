@@ -13,7 +13,7 @@ Para realizar la clonacion del proyecto, ejecutar en la consola:
 Y ejecutar :
 
 ```bash
-npm install --save firebas
+npm install --save firebase
 npm start
 ```
 
