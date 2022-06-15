@@ -16,11 +16,36 @@ import {
   Td,
   TableContainer,
 } from '@chakra-ui/react';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../../Services/Firebase';
+import CartEmpty from './CartEmpty';
 
 const Cart = () => {
   const { cart, totalCart, removeItems, removeCart, getQuantity } =
     useContext(CartContext);
   const cantidad = getQuantity();
+
+  const createOrder = () => {
+    const objOrder = {
+      buyer: {
+        name: 'Juan',
+        lastName: 'Perez',
+        email: '',
+        phone: '',
+        domicilio: '',
+      },
+      items: cart,
+      total: totalCart(),
+    };
+    console.log(objOrder);
+
+    const refCollectionOrder = collection(db, 'Orden de Compra');
+
+    addDoc(refCollectionOrder, objOrder).then(({ id }) => {
+      console.log(`se creo la orden id: ${id}`);
+    });
+  };
+
   return (
     <>
       <Flex
@@ -30,49 +55,7 @@ const Cart = () => {
         width={'90%'}
       >
         {cantidad === 0 ? (
-          <Box
-            backgroundColor='white'
-            alignItems='center'
-            border='1px solid #c5caff'
-            mx={20}
-            pl={3}
-            pr={3}
-            pt={5}
-            pb={5}
-            rounded={10}
-            width={'70%'}
-          >
-            <Text
-              fontWeight={700}
-              m={4}
-              pb={3}
-              alignItems='self-start'
-              fontSize={{ base: '1xl', sm: '1xl' }}
-              borderBottom='1px solid #c5caff'
-            >
-              Carrito ({cantidad})
-            </Text>
-            <Flex flexDirection={'column'} width='100%'>
-              <Box
-                backgroundColor='white'
-                alignItems='center'
-                textAlign='center'
-                m={20}
-                pl={3}
-                pr={3}
-                pt={5}
-                pb={5}
-                rounded={10}
-              >
-                <Text fontWeight={100} fontSize={{ base: '2xl', sm: '3xl' }}>
-                  Tu carrito está vacío
-                </Text>
-                <Text fontWeight={100} fontSize={{ base: '2xl', sm: 'md' }}>
-                  ¿No sabés qué comprar? ¡Nuestros productos te esperan!
-                </Text>
-              </Box>
-            </Flex>
-          </Box>
+          <CartEmpty />
         ) : (
           <Box
             backgroundColor='white'
@@ -234,7 +217,9 @@ const Cart = () => {
               justifyContent={'space-between'}
             >
               <Text fontWeight={700}>Total: {totalCart()}</Text>
-              <Button>Continuar Compra</Button>
+              <Button onClick={createOrder}>
+                <Link to='/Checkout'>Continuar Compra</Link>
+              </Button>
             </Box>
           </Flex>
         )}
