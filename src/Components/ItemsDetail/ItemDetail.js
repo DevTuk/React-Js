@@ -38,7 +38,7 @@ const ItemDetail = ({ id, stock, imagen, nombre, precio, descripcion }) => {
   };
 
   return (
-    <Container maxW={'7xl'} border='2px solid #c5caff' rounded='50'>
+    <Container maxW={'7xl'} border='1px solid #c5caff' rounded='50'>
       <Stack
         align={'center'}
         textAlign={'center'}
