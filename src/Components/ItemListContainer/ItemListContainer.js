@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import ItemList from '../Items/ItemList';
-// import { CustomFetch, productsByCategory } from '../async/async';
 import { useParams } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
-import { getDocs, collection, query, where } from 'firebase/firestore';
-import { db } from '../../Services/Firebase';
 import { Box, Text } from '@chakra-ui/react';
+import { getProduct } from '../../Services/Firebase/Firestore';
 
 const ItemListContainer = () => {
   const [products, setProductos] = useState([]);
@@ -14,15 +12,9 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     setLoading(true);
-    const referenciaColeccion = categoryId
-      ? query(collection(db, 'Productos'), where('category', '==', categoryId))
-      : collection(db, 'Productos');
-    getDocs(referenciaColeccion)
+    getProduct()
       .then((response) => {
-        const products = response.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        });
-        setProductos(products);
+        setProductos(response);
       })
       .catch((error) => {
         console.log(error);
@@ -32,34 +24,9 @@ const ItemListContainer = () => {
       });
   }, [categoryId]);
 
-  // if (!categoryId) {
-  //   CustomFetch()
-  //     .then((response) => {
-  //       setProductos(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  //     .finally(() => {
-  //       setLoading(false);
-  //     });
-  // } else {
-  //   productsByCategory(categoryId)
-  //     .then((response) => {
-  //       setProductos(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  //     .finally(() => {
-  //       setLoading(false);
-  //     });
-  // }
-
   if (loading) {
     return <Loader />;
   }
-
   return (
     <>
       {products.length > 0 ? (

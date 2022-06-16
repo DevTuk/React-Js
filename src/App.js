@@ -6,6 +6,7 @@ import ItemDetailContainer from './Components/ItemDetailContainer/itemDetailCont
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Cart from './Components/Cart/Cart';
 import { CartContextProvider } from './Context/CartContext';
+import Formulario from './Components/Formulario/Formulario';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             />
             <Route path='/detail/:prodId' element={<ItemDetailContainer />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/Formulario' element={<Formulario />} />
             <Route path='*' element={<h1>Página no encontrada</h1>} />
           </Routes>
         </BrowserRouter>

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import CartContext from '../../Context/CartContext';
 import { Link } from 'react-router-dom';
+import { NumberInput } from '@chakra-ui/react';
 import {
   Box,
   Stack,
@@ -112,17 +113,28 @@ const Cart = () => {
                         flexDirection={{ base: 'column', md: 'row' }}
                         width='100%'
                       >
-                        <Image
-                          height='80px'
-                          width='80px'
-                          display='flex'
-                          alignItems='flex-start'
-                          justifyContent='flex-start'
-                          rounded={100}
-                          src={item.imagen}
-                        />
+                        <Link to={`/detail/${item.id}`}>
+                          <Image
+                            height='80px'
+                            width='80px'
+                            display='flex'
+                            alignItems='flex-start'
+                            justifyContent='flex-start'
+                            rounded={100}
+                            src={item.imagen}
+                          />
+                        </Link>
+
                         <Text fontWeight={700}>{item.nombre}</Text>
                         <Text fontWeight={700}>{item.cantidad}</Text>
+                        <NumberInput
+                          type='number'
+                          min='1'
+                          value={item.cantidad}
+                        >
+                          {item.cantidad}{' '}
+                        </NumberInput>
+
                         <Text fontWeight={700}>{item.precio}</Text>
                         <Button
                           variant='solid'
@@ -218,7 +230,7 @@ const Cart = () => {
             >
               <Text fontWeight={700}>Total: {totalCart()}</Text>
               <Button onClick={createOrder}>
-                <Link to='/Checkout'>Continuar Compra</Link>
+                <Link to='/Formulario'>Continuar Compra</Link>
               </Button>
             </Box>
           </Flex>
