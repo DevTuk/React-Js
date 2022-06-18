@@ -6,6 +6,7 @@ import {
   Input,
   Button,
   Center,
+  useToast,
   Heading,
   FormLabel,
   VStack,
@@ -21,6 +22,7 @@ const Formulario = () => {
   const { cart, totalCart, removeCart, getQuantity } = useContext(CartContext);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const cantidad = getQuantity();
+  const toast = useToast();
 
   const onChange = (e) => {
     setCliente({
@@ -74,12 +76,18 @@ const Formulario = () => {
 
     const refCollectionOrder = collection(db, 'Orden de Compra');
     addDoc(refCollectionOrder, objOrder).then(({ id }) => {
-      console.log(`se creo la orden id: ${id}`);
+      toast({
+        title: `Orden creada con exito id: ${id}`,
+        status: 'success',
+        isClosable: true,
+        position: 'top',
+        duration: 3000,
+      });
     });
     removeCart();
     setTimeout(() => {
       window.location.href = '/';
-    }, 1500);
+    }, 3500);
   };
 
   const onSubmit = (e) => {
