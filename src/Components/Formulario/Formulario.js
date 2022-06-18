@@ -10,7 +10,7 @@ import {
   FormLabel,
   VStack,
 } from '@chakra-ui/react';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import CartContext from '../../Context/CartContext';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../Services/Firebase';
@@ -18,9 +18,17 @@ import CartDetail from '../Cart/CartDetail';
 
 const Formulario = () => {
   const { register, handleSubmit } = useForm();
-  const { cart, totalCart, removeCart } = useContext(CartContext);
-  const [btnDisabled, setBtnDisabled] = useState(false);
-  
+  const { cart, totalCart, removeCart, getQuantity } = useContext(CartContext);
+  const [btnDisabled, setBtnDisabled] = useState(true);
+  const cantidad = getQuantity();
+
+  const onChange = (e) => {
+    setCliente({
+      ...cliente,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const [cliente, setCliente] = useState({
     Nombre: '',
     Apellido: '',
@@ -29,11 +37,31 @@ const Formulario = () => {
     Mensaje: '',
   });
 
-  const onChange = (e) => {
-    setCliente({
-      ...cliente,
-      [e.target.name]: e.target.value,
-    });
+  useEffect(() => {
+    manejoBoton();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cliente]);
+
+  const manejoBoton = () => {
+    //cuando todos los imputs requeridos esten llenos se habilita el boton
+    if (
+      cliente.Nombre !== '' &&
+      cliente.Apellido !== '' &&
+      cliente.Email !== '' &&
+      cliente.Telefono !== ''
+    ) {
+      setBtnDisabled(false);
+    }
+    //cuando algun imput requerido esta vacio se deshabilita el boton
+    if (
+      cantidad === 0 ||
+      cliente.Nombre === '' ||
+      cliente.Apellido === '' ||
+      cliente.Email === '' ||
+      cliente.Telefono === ''
+    ) {
+      setBtnDisabled(true);
+    }
   };
 
   const createOrder = () => {
@@ -48,16 +76,14 @@ const Formulario = () => {
     addDoc(refCollectionOrder, objOrder).then(({ id }) => {
       console.log(`se creo la orden id: ${id}`);
     });
-    setBtnDisabled(true);
     removeCart();
     setTimeout(() => {
       window.location.href = '/';
-    }, 3000);
+    }, 1500);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-   
   };
 
   return (

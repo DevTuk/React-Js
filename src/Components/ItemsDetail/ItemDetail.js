@@ -20,16 +20,15 @@ import { useState, useContext } from 'react';
 import CartContext from '../../Context/CartContext';
 
 const ItemDetail = ({ id, stock, imagen, nombre, precio, descripcion }) => {
-  const [cantidad, setCantidad] = useState(0); //en cantidad se almacena la cantidad de productos que se van a comprar, proveniente de ItemCount.
+  const [cantidad, setCantidad] = useState(0);
   const toast = useToast();
   const { addItem, getProduct } = useContext(CartContext);
-
   const handleOnAdd = (cantidad) => {
     toast({
       title: 'Exitoso',
       description: 'Producto agregado al carrito',
       status: 'success',
-      duration: 4000,
+      duration: 2000,
       isClosable: true,
       position: 'bottom-right',
     });
