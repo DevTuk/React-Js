@@ -17,8 +17,8 @@ import {
   Td,
   TableContainer,
 } from '@chakra-ui/react';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../../Services/Firebase';
+// import { addDoc, collection } from 'firebase/firestore';
+// import { db } from '../../Services/Firebase';
 import CartEmpty from './CartEmpty';
 
 const Cart = () => {
@@ -26,26 +26,26 @@ const Cart = () => {
     useContext(CartContext);
   const cantidad = getQuantity();
 
-  const createOrder = () => {
-    const objOrder = {
-      buyer: {
-        name: 'Juan',
-        lastName: 'Perez',
-        email: '',
-        phone: '',
-        domicilio: '',
-      },
-      items: cart,
-      total: totalCart(),
-    };
-    console.log(objOrder);
+  // const createOrder = () => {
+  //   const objOrder = {
+  //     buyer: {
+  //       nombre: 'Juan',
+  //       Apellido: 'Perez',
+  //       Email: '',
+  //       Telefono: '',
+  //       Mensaje: '',
+  //     },
+  //     items: cart,
+  //     total: totalCart(),
+  //   };
+  //   console.log(objOrder);
 
-    const refCollectionOrder = collection(db, 'Orden de Compra');
+  //   const refCollectionOrder = collection(db, 'Orden de Compra');
 
-    addDoc(refCollectionOrder, objOrder).then(({ id }) => {
-      console.log(`se creo la orden id: ${id}`);
-    });
-  };
+  //   addDoc(refCollectionOrder, objOrder).then(({ id }) => {
+  //     console.log(`se creo la orden id: ${id}`);
+  //   });
+  // };
 
   return (
     <>
@@ -127,7 +127,6 @@ const Cart = () => {
                               src={item.imagen}
                             />
                           </Link>
-
                           <Text fontWeight={700}>{item.nombre}</Text>
                           <Text fontWeight={700}>{item.cantidad}</Text>
                           <Text fontWeight={700}>{item.precio}</Text>
@@ -224,7 +223,7 @@ const Cart = () => {
                 justifyContent={'space-between'}
               >
                 <Text fontWeight={700}>Total: {totalCart()}</Text>
-                <Button onClick={createOrder}>
+                <Button>
                   <Link to='/Formulario'>Continuar Compra</Link>
                 </Button>
               </Box>

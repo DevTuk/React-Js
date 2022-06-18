@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 // import { getProductsById } from '../async/async';
 import { useParams } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
-
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../../Services/Firebase';
 
